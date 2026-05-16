@@ -5,9 +5,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 export default function ProductCard({ product }) {
   const router = useRouter();
+
+  const { addToCart } = useCart();
 
   return (
     <Card
@@ -73,7 +76,14 @@ export default function ProductCard({ product }) {
       </Box>
 
       <Box sx={{ p: 2 }}>
-        <Button fullWidth variant="contained">
+        <Button
+          fullWidth
+          variant="contained"
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCart(product);
+          }}
+        >
           Add to Cart
         </Button>
       </Box>
