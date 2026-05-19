@@ -7,7 +7,6 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
-  // ADD TO CART
   const addToCart = (product) => {
     console.log("Added:", product);
     setCartItems((prev) => [...prev, product]);
@@ -24,7 +23,6 @@ export function CartProvider({ children }) {
   );
 }
 
-// CUSTOM HOOK
 export function useCart() {
   return useContext(CartContext);
 }
